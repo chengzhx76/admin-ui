@@ -55,7 +55,7 @@ const app = {
     TOGGLE_SIDEBAR: state => {
       state.sidebarOpened = !state.sidebarOpened
     },
-
+    // 新打开标签页
     ADD_VISITED_VIEWS: (state, view) => {
       if (state.visitedViews.some(v => v.path === view.path)) return
       state.visitedViews.push({
@@ -67,42 +67,76 @@ const app = {
         state.cachedViews.push(view.name)
       }
     },
-
+    // 关闭当前的标签页
     DEL_VISITED_VIEWS: (state, view) => {
-      for (const [i, v] of state.visitedViews.entries()) {
-        if (v.path === view.path) {
-          state.visitedViews.splice(i, 1)
+      for (const [index, item] of state.visitedViews.entries()) {
+        if (item.path === view.path) {
+          state.visitedViews.splice(index, 1)
           break
         }
       }
-      for (const i of state.cachedViews) {
-        if (i === view.name) {
-          const index = state.cachedViews.indexOf(i)
+      for (const [index, item] of state.cachedViews.entries()) {
+        if (item === view.name) {
           state.cachedViews.splice(index, 1)
           break
         }
       }
     },
-
+    // 关闭其他的标签页
     DEL_OTHERS_VIEWS: (state, view) => {
-      for (const [i, v] of state.visitedViews.entries()) {
-        if (v.path === view.path) {
-          state.visitedViews = state.visitedViews.slice(i, i + 1)
+      let viewIndex = -1
+      for (const [index, item] of state.visitedViews.entries()) {
+        if (item.path === view.path) {
+          viewIndex = index
           break
         }
       }
-      for (const i of state.cachedViews) {
-        if (i === view.name) {
-          const index = state.cachedViews.indexOf(i)
-          state.cachedViews = state.cachedViews.slice(index, i + 1)
+      if (viewIndex === 0) {
+        state.visitedViews.splice(1); // 首页标签
+      } else {
+        state.visitedViews.splice(viewIndex + 1); // 当前标签的后标签
+        state.visitedViews.splice(1, viewIndex - 1);// 当前标签的前标签
+      }
+
+
+      let cachedViewNameIndex = -1
+      for (const [index, item] of state.cachedViews.entries()) {
+        if (item === view.name) {
+          cachedViewNameIndex = index
           break
         }
+      }
+
+      if (cachedViewNameIndex !== -1) {
+        let firstCachedView = state.cachedViews[0];
+        if (firstCachedView) {
+          if (firstCachedView === 'dashboard_home') {
+            if (cachedViewNameIndex === 0) {
+              state.cachedViews.splice(1)
+            } else {
+              state.cachedViews.splice(cachedViewNameIndex + 1)
+              state.cachedViews.splice(1, cachedViewNameIndex -1)
+            }
+          } else {
+            state.cachedViews.splice(cachedViewNameIndex + 1)
+            state.cachedViews.splice(0, cachedViewNameIndex)
+          }
+        }
+      } else {
+        state.cachedViews = []
       }
     },
-
+    // 关闭所有的标签页
     DEL_ALL_VIEWS: (state) => {
-      state.visitedViews = [];
-      state.cachedViews = [];
+      state.visitedViews = state.visitedViews.slice(0, 1)
+      let firstCachedView = state.cachedViews[0]
+      if (firstCachedView) {
+        if (firstCachedView === 'dashboard_home') {
+          state.cachedViews = state.cachedViews.slice(0, 1)
+        } else {
+          state.cachedViews = []
+        }
+      }
     },
 
     ADD_ERROR_LOG: (state, log) => {

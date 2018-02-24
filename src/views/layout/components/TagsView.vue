@@ -1,35 +1,29 @@
 <template>
   <div class="tags-view-container">
     <scroll-pane class='tags-view-wrapper' ref='scrollPane'>
-      <router-link ref='tag' class="tags-view-item" :class="isActive(tag)?'active':''" v-for="tag in Array.from(visitedViews)"
-        :to="tag.path" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
+      <router-link ref='tag' :class="['tags-view-item', {'active' : isActive(tag)}]" v-for="tag in Array.from(visitedViews)"
+        :to="tag.path" :key="tag.path">
         {{tag.title}}
-        <span class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
+        <span v-if="isNotHome(tag)" class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
       </router-link>
     </scroll-pane>
-    <!--<ul class='contextmenu' v-show="visible" :style="{left:left+'px',top:top+'px'}">
-      <li @click="closeSelectedTag(selectedTag)">Close</li>
-      <li @click="closeOthersTags">Close Others</li>
-      <li @click="closeAllTags">Close All</li>
-    </ul>-->
-
     <ul class='contextmenu'>
-      sss
+      <dropdown @closeOthers="closeOthersTags" @closeAll="closeAllTags"></dropdown>
     </ul>
   </div>
 </template>
 
 <script>
 import ScrollPane from '@/components/scrollPane'
+import Dropdown from '@/components/dropdown'
 
 export default {
-  components: { ScrollPane },
+  components: {
+    ScrollPane,
+    Dropdown
+  },
   data() {
     return {
-      visible: false,
-      top: 0,
-      left: 0,
-      selectedTag: {}
     }
   },
   computed: {
@@ -42,13 +36,6 @@ export default {
       this.addViewTags()
       this.moveToCurrentTag()
     },
-    visible(value) {
-      if (value) {
-        document.body.addEventListener('click', this.closeMenu)
-      } else {
-        document.body.removeEventListener('click', this.closeMenu)
-      }
-    }
   },
   mounted() {
     this.addViewTags()
@@ -62,6 +49,9 @@ export default {
     },
     isActive(route) {
       return route.path === this.$route.path || route.name === this.$route.name
+    },
+    isNotHome(route) {
+      return route.name !== 'dashboard_home'
     },
     addViewTags() {
       const route = this.generateRoute()
@@ -94,8 +84,11 @@ export default {
       })
     },
     closeOthersTags() {
-      this.$router.push(this.selectedTag.path)
-      this.$store.dispatch('delOthersViews', this.selectedTag).then(() => {
+      const selectedTag = this.generateRoute()
+      if (!selectedTag) {
+        return false
+      }
+      this.$store.dispatch('delOthersViews', selectedTag).then(() => {
         this.moveToCurrentTag()
       })
     },
@@ -103,15 +96,6 @@ export default {
       this.$store.dispatch('delAllViews')
       this.$router.push('/')
     },
-    openMenu(tag, e) {
-      this.visible = true
-      this.selectedTag = tag
-      this.left = e.clientX
-      this.top = e.clientY
-    },
-    closeMenu() {
-      this.visible = false
-    }
   }
 }
 </script>

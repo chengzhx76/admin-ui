@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>下拉菜单</title>
+
+  <style>
+    a {
+      text-decoration: none;
+      color: #2d2f33;
+    }
+    a:hover {
+      color: #2d2f33;
+    }
+    .dropdown {
+      height: 32px;
+      width: 60px;
+    }
+    .dropdown .title {
+      height: 100%;
+      width: 100%;
+      background: #2D8CF0;
+      display: block;
+      text-align: center;
+      line-height: 32px;
+      margin-left: 10px;
+      color: #ffffff;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    .dropdown .title:hover {
+      color: #ffffff;
+    }
+
+    .dropdown .menu {
+      width: 80px;
+      text-align: center;
+      background: #ffffff;
+      box-shadow: 0 1px 6px rgba(0,0,0,.2);
+      border-radius: 4px;
+      overflow: auto;
+      margin: 5px 0;
+      padding: 5px 0;
+    }
+    .dropdown .menu li {
+      height: 28px;
+      line-height: 28px;
+      list-style: none;
+      font-size: 14px;
+    }
+    .dropdown .menu li a {
+      height: 100%;
+      display: block;
+    }
+    .dropdown .menu li a:hover {
+      background: #F3F3F3;
+    }
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
+
+  </style>
+</head>
+<body>
+<div id="dropdown-menu" class="dropdown">
+  <a href="javascript:;" class="title" @click="show = !show">操作</a>
+  <transition name="fade">
+    <ul class="menu" v-show="show">
+      <li><a href="javascript:;">关闭其他</a></li>
+      <li><a href="javascript:;">关闭全部</a></li>
+    </ul>
+  </transition>
+</div>
+</body>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el: '#dropdown-menu',
+    data: {
+      show: false
+    },
+    methods: {
+    }
+  })
+</script>
+</html>

@@ -14,16 +14,17 @@ export const loginRouter = {
 export const otherRouter = {
   path: '/',
   name: 'otherRouter',
-  redirect: '/home',
+  redirect: '/dashboard',
   component: Layout,
   children: [
     {
-      path: 'home',
-      name: 'home_index',
+      path: 'dashboard',
+      name: 'dashboard_home',
       meta: {
-        title: '测试页',
+        title: '首页',
+        noCache: true
       },
-      component: () => import('@/components/Hello')
+      component: () => import('@/views/dashboard/home')
     },
   ]
 };
@@ -43,7 +44,7 @@ export const appRouter = [
       {
         path: 'add',
         name: 'user_add',
-        component: () => import('@/components/User'),
+        component: () => import('@/views/user/User'),
         meta: {
           title: '添加用户',
           roles: ['admin']
@@ -52,7 +53,7 @@ export const appRouter = [
       {
         path: 'list',
         name: 'user_list',
-        component: () => import('@/components/List'),
+        component: () => import('@/views/user/List'),
         meta: {
           title: '用户列表',
           roles: ['admin']

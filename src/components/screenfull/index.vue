@@ -58,8 +58,8 @@ export default {
   display: inline-block;
   cursor: pointer;
   fill: #5a5e66;;
-  width: 20px;
-  height: 20px;
-  vertical-align: 10px;
+  width: 18px;
+  height: 18px;
+  vertical-align: top;
 }
 </style>

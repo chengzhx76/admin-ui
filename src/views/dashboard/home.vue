@@ -1,13 +1,13 @@
 <template>
-  <div class="hello">
-    hello-comm
+  <div class="home">
+    仪表盘-首页
   </div>
 </template>
 
 <script>
 
   export default {
-    name: 'Hello',
+    name: 'home',
     components: {
     }
   }
