@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import unlock from './unlock.vue';
+  import unlock from './unlock';
   import Cookies from 'js-cookie';
 
   export default {
@@ -44,10 +44,8 @@
   };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-
   .unlock-con{
     width: 100%;
     height: 100%;
   }
-
 </style>

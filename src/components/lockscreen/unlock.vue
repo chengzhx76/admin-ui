@@ -67,7 +67,7 @@
           this.avatarLeft = '0px';
           this.inputLeft = '400px';
           this.password = '';
-//          Cookies.set('locking', '0');
+          Cookies.set('locking', '0');
           this.$emit('on-unlock');
         } else {
 //          $Message.error('密码错误,请重新输入。如果忘了密码，清除浏览器缓存重新登录即可，这里没有做后端验证');

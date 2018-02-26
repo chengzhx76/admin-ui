@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import store from '@/store'
 
+import Cookies from 'js-cookie';
+
 import {routers, page404} from './router';
 
 import { Message } from 'element-ui'
@@ -33,7 +35,15 @@ const whiteList = ['/login', '/authredirect'];
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  if (getToken()) {
+
+  if (Cookies.get('locking') === '1' && to.name !== 'locking') { // 判断当前是否是锁定状态
+    next({
+      replace: true,
+      name: 'locking'
+    });
+  } else if (Cookies.get('locking') === '0' && to.name === 'locking') {
+    next(false);
+  } else if (getToken()) {
     if (to.path === '/login') {
       next({ path: '/' });
       NProgress.done()
