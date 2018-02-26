@@ -23,7 +23,7 @@ service.interceptors.response.use(
     const meta = response.data.meta;
     if (meta.code !== 200) {
       Message({
-        message: meta.message,
+        message: meta.msg,
         type: 'error',
         duration: 5 * 1000
       });
@@ -36,7 +36,7 @@ service.interceptors.response.use(
   error => {
     console.log('err' + error)
     Message({
-      message: error.message,
+      message: error.msg,
       type: 'error',
       duration: 5 * 1000
     })

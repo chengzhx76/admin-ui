@@ -10,6 +10,9 @@
       <el-tooltip effect="dark" content="全屏" placement="bottom">
         <screenfull class="screenfull right-menu-item"></screenfull>
       </el-tooltip>
+      <el-tooltip effect="dark" content="锁屏" placement="bottom">
+        <lockscreen class="lockscreen right-menu-item"></lockscreen>
+      </el-tooltip>
 
       <div class="user-container right-menu-item">
 
@@ -30,27 +33,6 @@
           <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
         </div>
       </div>
-
-
-
-
-      <!--<el-dropdown class="avatar-container right-menu-item" trigger="click">
-        <div class="avatar-wrapper">
-          <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
-          <i class="el-icon-caret-bottom"></i>
-        </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/">
-            <el-dropdown-item>首页</el-dropdown-item>
-          </router-link>
-          <a target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>项目地址</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided>
-            <span @click="logout" style="display:block;">退出登录</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>-->
     </div>
   </el-menu>
 </template>
@@ -61,6 +43,7 @@ import Breadcrumb from '@/components/breadcrumb'
 import Hamburger from '@/components/hamburger'
 import ErrorLog from '@/components/errorLog'
 import Screenfull from '@/components/screenfull'
+import Lockscreen from '@/components/lockscreen'
 
 export default {
   components: {
@@ -68,6 +51,7 @@ export default {
     Hamburger,
     ErrorLog,
     Screenfull,
+    Lockscreen
   },
   computed: {
     ...mapGetters([
@@ -124,6 +108,9 @@ export default {
       height: 18px;
       width: 18px;
       margin-top: 21px;
+    }
+    .lockscreen {
+      height: 39px;
     }
     .international{
       vertical-align: top;

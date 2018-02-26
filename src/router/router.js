@@ -10,6 +10,12 @@ export const loginRouter = {
   component: () => import('@/views/login')
 };
 
+export const locking = {
+  path: '/locking',
+  name: 'locking',
+  component: () => import('@/components/lockscreen/lockingPage')
+};
+
 // 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
 export const otherRouter = {
   path: '/',
@@ -133,6 +139,7 @@ export const page500 = {
 // 所有上面定义的路由都要写在下面的routers里
 export const routers = [
   loginRouter,
+  locking,
   otherRouter,
   // ...appRouter,
   page403,
