@@ -19,71 +19,14 @@
           </div>
         </el-card>
       </el-col>
-      <el-col span="16">
-        <el-row gutter="15">
-          <el-col span="6">
-            <card
-              id-name="card-1"
-              color="#64D572"
-              iconType="eye"
-              :iconSize=30
-              :endVal=20000
-              :countSize=30
-              :countWeight=700
-              content="今日浏览量"
-            ></card>
-          </el-col>
-          <el-col span="6">
-            <card
-              id-name="card-2"
-              color="#2d8cf0"
-              iconType="peoples"
-              :iconSize=30
-              :endVal=300000
-              :countSize=30
-              :countWeight=700
-              content="今日新增用户"
-            ></card>
-          </el-col>
-          <el-col span="6">
-            <card
-              id-name="card-3"
-              color="#FFD572"
-              iconType="chart"
-              :iconSize=30
-              :endVal=20000
-              :countSize=30
-              :countWeight=700
-              content="今日数据采集量"
-            ></card>
-          </el-col>
-          <el-col span="6">
-            <card
-              id-name="card-4"
-              color="#F25E43"
-              iconType="example"
-              :iconSize=30
-              :endVal=20000
-              :countSize=30
-              :countWeight=700
-              content="今日服务调用量"
-            ></card>
-          </el-col>
-        </el-row>
-      </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
-  import Card from '@/components/card'
-
   export default {
-    name: 'home',
-    components: {
-      Card
-    },
+    name: 'User',
     computed: {
       ...mapGetters([
         'username',

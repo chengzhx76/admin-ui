@@ -21,8 +21,8 @@
             {{ name }}<i class="el-icon-caret-bottom"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <router-link to="/">
-              <el-dropdown-item>首页</el-dropdown-item>
+            <router-link to="/personal">
+              <el-dropdown-item>个人中心</el-dropdown-item>
             </router-link>
             <el-dropdown-item divided>
               <span @click="logout" style="display:block;">退出登录</span>
@@ -96,6 +96,9 @@ export default {
   .right-menu {
     float: right;
     height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
     /*background-color: #99a9bf;*/
     &:focus{
      outline: none;

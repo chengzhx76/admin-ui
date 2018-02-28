@@ -26,3 +26,9 @@
     }
   }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .app-main {
+    margin: 10px;
+  }
+</style>

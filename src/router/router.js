@@ -10,12 +10,6 @@ export const loginRouter = {
   component: () => import('@/views/login')
 };
 
-export const locking = {
-  path: '/locking',
-  name: 'locking',
-  component: () => import('@/components/lockscreen/lockingPage')
-};
-
 // 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
 export const otherRouter = {
   path: '/',
@@ -32,6 +26,24 @@ export const otherRouter = {
       },
       component: () => import('@/views/dashboard/home')
     },
+    {
+      path: 'personal',
+      name: 'personal',
+      meta: {
+        title: '个人中心',
+        noCache: true
+      },
+      component: () => import('@/views/user/Personal')
+    },
+    {
+      path: 'test',
+      name: 'test',
+      meta: {
+        title: '小组件',
+        noCache: true
+      },
+      component: () => import('@/views/dashboard/Test')
+    }
   ]
 };
 
@@ -50,7 +62,7 @@ export const appRouter = [
       {
         path: 'add',
         name: 'user_add',
-        component: () => import('@/views/user/User'),
+        component: () => import('@/views/user/Add'),
         meta: {
           title: '添加用户',
           roles: ['admin']
@@ -109,6 +121,13 @@ export const appRouter = [
 ];
 
 // -----------------------------------------------------------------------------------------------
+
+export const locking = {
+  path: '/locking',
+  name: 'locking',
+  component: () => import('@/components/lockscreen/lockingPage')
+};
+
 export const page403 = {
   path: '/403',
   name: 'error-403',

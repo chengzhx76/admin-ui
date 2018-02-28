@@ -1,6 +1,7 @@
 <template>
   <div @click="lockScreen" class="lock-screen-btn-con">
-    <i class="el-icon-view"></i>
+    <!--<i class="el-icon-view"></i>-->
+    <svg-icon icon-class="lock" />
   </div>
 </template>
 
@@ -65,8 +66,6 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .lock-screen-btn-con {
     font-size: 22px;
-  }
-  .el-icon-view {
     cursor: pointer;
   }
 </style>
