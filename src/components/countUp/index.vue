@@ -1,18 +1,19 @@
 <template>
-    <div>
-        <p :class="className"
-           :style="{textAlign: 'center', color: color, fontSize: countSize + 'px', fontWeight: countWeight}">
-            <span v-cloak :id="idName">{{ startVal }}</span>
-            <span>{{ unit }}</span>
-        </p>
-        <slot name="text"></slot>
-    </div>
+  <div>
+    <p :class="className"
+       :style="{textAlign: 'center', color: color, fontSize: countSize + 'px', fontWeight: countWeight}">
+      <span v-cloak :id="idName">{{ startVal }}</span>
+      <span>{{ unit }}</span>
+    </p>
+    <slot name="text"></slot>
+  </div>
 </template>
 
 <script>
   import CountUp from 'countup'
 
-  function transformValue (val) {
+  function transformValue(val) {
+    console.log(val)
     let endVal = 0
     let unit = ''
     if (val < 1000) {
@@ -34,8 +35,8 @@
   }
 
   export default {
-    name: 'countUp',
-    data () {
+    name: 'CountUp',
+    data() {
       return {
         unit: '',
         demo: {}
@@ -85,7 +86,7 @@
         default: 700
       }
     },
-    mounted () {
+    mounted() {
       this.$nextTick(() => {
         setTimeout(() => {
           let res = transformValue(this.endVal)
@@ -100,7 +101,7 @@
       })
     },
     watch: {
-      endVal (val) {
+      endVal(val) {
         let res = transformValue(val)
         let endVal = res.val
         this.unit = res.unit

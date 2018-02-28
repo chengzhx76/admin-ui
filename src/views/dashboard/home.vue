@@ -1,13 +1,13 @@
 <template>
   <div class="user">
-    <el-row gutter="15">
-      <el-col span="8">
+    <el-row :gutter="15">
+      <el-col :span="8">
         <el-card class="user-box">
           <el-row class="user-info">
-            <el-col span="8" class="avatar">
+            <el-col :span="8" class="avatar">
               <img class="avatar-img" :src="avatar" />
             </el-col>
-            <el-col span="16" class="name">
+            <el-col :span="16" class="name">
               <strong class="real-name">{{ name }}</strong>
               <p class="username">{{ username }}</p>
             </el-col>
@@ -19,9 +19,9 @@
           </div>
         </el-card>
       </el-col>
-      <el-col span="16">
-        <el-row gutter="15">
-          <el-col span="6">
+      <el-col :span="16">
+        <el-row :gutter="15">
+          <el-col :span=6>
             <card
               id-name="card-1"
               color="#64D572"
@@ -33,7 +33,7 @@
               content="今日浏览量"
             ></card>
           </el-col>
-          <el-col span="6">
+          <el-col :span=6>
             <card
               id-name="card-2"
               color="#2d8cf0"
@@ -45,7 +45,7 @@
               content="今日新增用户"
             ></card>
           </el-col>
-          <el-col span="6">
+          <el-col :span=6>
             <card
               id-name="card-3"
               color="#FFD572"
@@ -57,7 +57,7 @@
               content="今日数据采集量"
             ></card>
           </el-col>
-          <el-col span="6">
+          <el-col :span=6>
             <card
               id-name="card-4"
               color="#F25E43"
@@ -77,11 +77,13 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import CountUp from '@/components/countUp'
   import Card from '@/components/card'
 
   export default {
     name: 'home',
     components: {
+      CountUp,
       Card
     },
     computed: {

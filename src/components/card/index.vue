@@ -34,12 +34,21 @@
     },
     props: {
       idName: String,
+      endVal: Number,
       color: String,
       iconType: String,
-      iconSize: Number,
-      endVal: Number,
-      countSize: Number,
-      countWeight: Number,
+      iconSize: {
+        type: Number,
+        default: 40
+      },
+      countSize: {
+        type: Number,
+        default: 30
+      },
+      countWeight: {
+        type: Number,
+        default: 700
+      },
       content: String
     }
   }

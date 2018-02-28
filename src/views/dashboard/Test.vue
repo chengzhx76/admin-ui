@@ -1,59 +1,39 @@
 <template>
-  <el-card class="box-card">
-    <el-row class="height-100-ratio">
-      <el-col :span=8 class="height-100-ratio" :style="{backgroundColor: color, color: 'white'}">
-        <el-row class="height-100-ratio" type="flex" align="middle" justify="center">
-          <svg-icon :icon-class="iconType" :style="{fontSize: iconSize + 'px'}"/>
-        </el-row>
-      </el-col>
-      <el-col :span=8 class="height-100-ratio">
-        <el-row class="height-100-ratio" type="flex" align="middle" justify="center">
-          <count-up
-            class="user-card-count"
-            id-name="user_created_count"
-            :end-val=endVal
-            :color=color
-            :countSize="countSize"
-            :countWeight="countWeight">
-            <p class="desc-text" slot="text">{{ content }}</p>
-          </count-up>
-        </el-row>
-      </el-col>
-      <el-col :span=8 class="height-100-ratio">
-        <el-row class="height-100-ratio" type="flex" align="middle" justify="center">
-          <count-up
-            class="user-card-count"
-            id-name="user_created_count"
-            :end-val=endVal
-            :color=color
-            :countSize="countSize"
-            :countWeight="countWeight">
-            <p class="desc-text" slot="text">{{ content }}</p>
-          </count-up>
-        </el-row>
-      </el-col>
-    </el-row>
-  </el-card>
+  <div>
+    <div>
+      <card
+        id-name="card-1"
+        color="#64D572"
+        :end-val=user
+        iconType="eye"
+        content="今日浏览量"
+      ></card>
+    </div>
+    <div>
+      <card
+        id-name="card-2"
+        color="#64D572"
+        :end-val=visit
+        iconType="eye"
+        content="今日浏览量-2"
+      ></card>
+    </div>
+  </div>
 </template>
 
 <script>
 
-  import CountUp from '@/components/countUp'
+  import Card from '@/components/card'
 
   export default {
     name: 'Test',
     components: {
-      CountUp
+      Card
     },
     data() {
       return {
-        color: '#2d8cf0',
-        iconType: 'peoples',
-        iconSize: 30,
-        endVal: 20000,
-        countSize: 30,
-        countWeight: 700,
-        content: "今日新增用户"
+        user: 496,
+        visit: 3264
       }
     }
   }
