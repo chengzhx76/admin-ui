@@ -13,7 +13,6 @@
   import CountUp from 'countup'
 
   function transformValue(val) {
-    console.log(val)
     let endVal = 0
     let unit = ''
     if (val < 1000) {

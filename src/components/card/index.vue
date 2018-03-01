@@ -1,5 +1,5 @@
 <template>
-  <el-card class="box-card">
+  <el-card class="box-card" :bodyStyle="{padding: 0, height: '100%'}">
     <el-row class="height-100-ratio">
       <el-col :span=8 class="height-100-ratio" :style="{backgroundColor: color, color: 'white'}">
         <el-row class="height-100-ratio" type="flex" align="middle" justify="center">
@@ -10,11 +10,11 @@
         <el-row class="height-100-ratio" type="flex" align="middle" justify="center">
           <count-up
             class="user-card-count"
-            id-name="user_created_count"
+            :id-name=idName
             :end-val=endVal
             :color=color
-            :countSize="countSize"
-            :countWeight="countWeight">
+            :countSize=countSize
+            :countWeight=countWeight>
             <p class="desc-text" slot="text">{{ content }}</p>
           </count-up>
         </el-row>
@@ -57,7 +57,7 @@
 <style rel="stylesheet/scss" lang="scss">
   .box-card .el-card__body {
     padding: 0 !important;
-    height: 100%;
+
   }
   .box-card {
     height: 100px;

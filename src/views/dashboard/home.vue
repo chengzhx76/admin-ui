@@ -20,7 +20,7 @@
         </el-card>
       </el-col>
       <el-col :span="16">
-        <el-row :gutter="15">
+        <el-row :gutter="15" style="margin-bottom: 10px">
           <el-col :span=6>
             <card
               id-name="card-1"
@@ -70,6 +70,22 @@
             ></card>
           </el-col>
         </el-row>
+        <el-row>
+          <el-card>
+            <div slot="header">
+              <i class="el-icon-info"></i>
+              <span>节点地理分布</span>
+            </div>
+            <el-row :gutter="20">
+              <el-col :span="10">
+                <map-data-table :nodes=nodes></map-data-table>
+              </el-col>
+              <el-col :span="14">
+                <node-map :cityData=cityData></node-map>
+              </el-col>
+            </el-row>
+          </el-card>
+        </el-row>
       </el-col>
     </el-row>
   </div>
@@ -79,12 +95,16 @@
   import { mapGetters } from 'vuex'
   import CountUp from '@/components/countUp'
   import Card from '@/components/card'
+  import MapDataTable from './components/MapDataTable'
+  import NodeMap from './components/NodeMap'
 
   export default {
     name: 'home',
     components: {
       CountUp,
-      Card
+      Card,
+      MapDataTable,
+      NodeMap
     },
     computed: {
       ...mapGetters([
@@ -93,6 +113,25 @@
         'avatar'
       ])
     },
+    data() {
+      return {
+        nodes: [{
+          city: '北京',
+          number: '5',
+        }, {
+          city: '厦门',
+          number: '1',
+        }, {
+          city: '上海',
+          number: '2',
+        }],
+        cityData: [
+          {name: '北京', value: 5},
+          {name: '厦门', value: 1},
+          {name: '上海', value: 2}
+        ]
+      }
+    }
   }
 </script>
 

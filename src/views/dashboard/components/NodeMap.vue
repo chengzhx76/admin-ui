@@ -1,23 +1,21 @@
 <template>
-  <div id="nodes-map" style="width:600px; height:600px"></div>
+  <div id="nodes-map" style="width:100%; height: 250px;"></div>
 </template>
 
 <script>
   import echarts from 'echarts';
   import 'echarts/map/js/china'
-  import geoData from './components/coordinate';
+  import geoData from './coordinate';
 
   export default {
-    name: 'Test',
+    name: 'NodeMap',
     data() {
       return {
-        nodesChartMap: null,
-        cityData: [
-          {name: '厦门', value: 1},
-          {name: '北京', value: 5},
-          {name: '上海', value: 2}
-        ]
+        nodesChartMap: null
       }
+    },
+    props: {
+      cityData: Array
     },
     methods: {
       drawNodesChartMap() {
@@ -44,7 +42,7 @@
             title: {
               text: '节点分布图',
               subtext: '全国节点分布图',
-              left: 'center',
+              left: 'left',
               textStyle: {
                 color: '#409EFF'
               }
