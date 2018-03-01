@@ -1,25 +1,52 @@
 <template>
   <div class="user">
     <el-row :gutter="15">
-      <el-col :span="8">
-        <el-card class="user-box">
-          <el-row class="user-info">
-            <el-col :span="8" class="avatar">
-              <img class="avatar-img" :src="avatar" />
-            </el-col>
-            <el-col :span="16" class="name">
-              <strong class="real-name">{{ name }}</strong>
-              <p class="username">{{ username }}</p>
-            </el-col>
-          </el-row>
-          <div class="line-gray"></div>
-          <div class="last-login-time">
-            <span class="text">上次登录时间：</span>
-            <em class="time">2018.2.27-15:12:02</em>
-          </div>
-        </el-card>
+      <el-col :span="8"> <!-- 用户、特点 -->
+        <el-row style="margin-bottom: 10px">
+          <el-card class="user-box">
+            <el-row class="user-info">
+              <el-col :span="8" class="avatar">
+                <img class="avatar-img" :src="avatar" />
+              </el-col>
+              <el-col :span="16" class="name">
+                <strong class="real-name">{{ name }}</strong>
+                <p class="username">{{ username }}</p>
+              </el-col>
+            </el-row>
+            <div class="line-gray"></div>
+            <div class="last-login-time">
+              <span class="text">上次登录时间：</span>
+              <em class="time">2018.2.27-15:12:02</em>
+            </div>
+          </el-card>
+        </el-row>
+        <el-row>
+          <el-card :bodyStyle="{padding: 0, marginLeft: '20px', height: '230px'}">
+            <div slot="header">
+              <i class="el-icon-info"></i>
+              <span>特点</span>
+            </div>
+            <ul class="feature">
+              <li>1. ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+              <li>ssss</li>
+            </ul>
+          </el-card>
+        </el-row>
       </el-col>
-      <el-col :span="16">
+      <el-col :span="16"> <!-- 卡片、分布图 -->
         <el-row :gutter="15" style="margin-bottom: 10px">
           <el-col :span=6>
             <card
@@ -97,10 +124,12 @@
   import Card from '@/components/card'
   import MapDataTable from './components/MapDataTable'
   import NodeMap from './components/NodeMap'
+  import ElRow from "element-ui/packages/row/src/row";
 
   export default {
     name: 'home',
     components: {
+      ElRow,
       CountUp,
       Card,
       MapDataTable,
@@ -186,4 +215,14 @@
     border-bottom: 2px solid #dcdcdc;
     margin: 10px 0;
   }
+
+  .feature {
+    height: 100%;
+    overflow:auto;
+    li {
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+
 </style>
