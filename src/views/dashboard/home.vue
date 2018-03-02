@@ -1,5 +1,5 @@
 <template>
-  <div class="user">
+  <div>
     <el-row :gutter="15">
       <el-col :span="8"> <!-- 用户、特点 -->
         <el-row style="margin-bottom: 10px">
@@ -27,21 +27,10 @@
               <span>特点</span>
             </div>
             <ul class="feature">
-              <li>1. ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
-              <li>ssss</li>
+              <li>1. 去中心化（Decentralized）</li>
+              <li>2. 去信任（Trustless）</li>
+              <li>3. 集体维护（Collectively Maintain）</li>
+              <li>4. 可靠数据库（Reliable Database）</li>
             </ul>
           </el-card>
         </el-row>
@@ -108,11 +97,59 @@
                 <map-data-table :nodes=nodes></map-data-table>
               </el-col>
               <el-col :span="14">
-                <node-map :cityData=cityData></node-map>
+                <node-map :cityData=nodes></node-map>
               </el-col>
             </el-row>
           </el-card>
         </el-row>
+      </el-col>
+    </el-row>
+    <el-row :gutter="15" style="margin-top: 10px">
+      <el-col :span="8">
+        <el-card>
+          <div slot="header">
+            <i class="el-icon-info"></i>
+            <span>接口调用量</span>
+          </div>
+          <div class="data-source-row">
+            <visiter-volume :visiter-volume=visiterVolume></visiter-volume>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card>
+          <div slot="header">
+            <i class="el-icon-info"></i>
+            <span>不同链交易占比</span>
+          </div>
+          <div class="data-source-row">
+            <data-source-pie></data-source-pie>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card>
+          <div slot="header">
+            <i class="el-icon-info"></i>
+            <span>物理占用量</span>
+          </div>
+          <div class="data-source-row">
+            <user-flow></user-flow>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row style="margin-top: 10px">
+      <el-col :span="24">
+        <el-card>
+          <div slot="header">
+            <i class="el-icon-info"></i>
+            <span>请求量</span>
+          </div>
+          <div class="data-source-row">
+            <service-request></service-request>
+          </div>
+        </el-card>
       </el-col>
     </el-row>
   </div>
@@ -124,16 +161,22 @@
   import Card from '@/components/card'
   import MapDataTable from './components/MapDataTable'
   import NodeMap from './components/NodeMap'
-  import ElRow from "element-ui/packages/row/src/row";
+  import VisiterVolume from './components/visiterVolume'
+  import DataSourcePie from './components/DataSourcePie'
+  import UserFlow from './components/UserFlow'
+  import ServiceRequest from './components/ServiceRequest'
 
   export default {
     name: 'home',
     components: {
-      ElRow,
       CountUp,
       Card,
       MapDataTable,
-      NodeMap
+      NodeMap,
+      VisiterVolume,
+      DataSourcePie,
+      UserFlow,
+      ServiceRequest
     },
     computed: {
       ...mapGetters([
@@ -154,10 +197,14 @@
           city: '上海',
           number: '2',
         }],
-        cityData: [
-          {name: '北京', value: 5},
-          {name: '厦门', value: 1},
-          {name: '上海', value: 2}
+        visiterVolume: [
+          {value: 453682, name: '周一'},
+          {value: 879545, name: '周二'},
+          {value: 2354678, name: '周三'},
+          {value: 1598403, name: '周四'},
+          {value: 543250, name: '周五'},
+          {value: 1305923, name: '周六'},
+          {value: 1103456, name: '周日'}
         ]
       }
     }
@@ -223,6 +270,9 @@
       height: 30px;
       line-height: 30px;
     }
+  }
+  .data-source-row {
+    height: 200px;
   }
 
 </style>

@@ -24,11 +24,11 @@
           let res = [];
           let len = data.length;
           for (var i = 0; i < len; i++) {
-            var geoCoord = geoData[data[i].name];
+            var geoCoord = geoData[data[i].city];
             if (geoCoord) {
               res.push({
-                name: data[i].name,
-                value: geoCoord.concat(data[i].value)
+                name: data[i].city,
+                value: geoCoord.concat(data[i].number)
               });
             }
           }
@@ -101,6 +101,16 @@
     },
     mounted() {
       this.drawNodesChartMap();
+      window.addEventListener('resize', function () {
+        this.nodesChartMap.resize();
+      });
+    },
+    beforeDestroy() {
+      if (!this.nodesChartMap) {
+        return
+      }
+      this.nodesChartMap.dispose()
+      this.nodesChartMap = null
     }
   }
 </script>

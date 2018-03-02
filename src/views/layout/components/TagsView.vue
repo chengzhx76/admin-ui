@@ -141,27 +141,9 @@ export default {
       }
     }
   }
-  /*.contextmenu {
-    margin: 0;
-    background: #fff;
-    z-index: 2;
-    position: absolute;
-    list-style-type: none;
-    padding: 5px 0;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #333;
-    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .3);
-    li {
-      margin: 0;
-      padding: 7px 16px;
-      cursor: pointer;
-      &:hover {
-        background: #eee;
-      }
-    }
-  }*/
+  .contextmenu {
+    z-index: 999;
+  }
 
   .contextmenu {
     margin: 0;

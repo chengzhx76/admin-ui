@@ -1,12 +1,12 @@
 <template>
-  <div id="service-request" style="width:600px; height:600px"></div>
+  <div id="service-request" style="width:100%; height:100%"></div>
 </template>
 
 <script>
   import echarts from 'echarts';
 
   export default {
-    name: 'Test',
+    name: 'serviceRequest',
     data() {
       return {
         serviceRequest: null,
