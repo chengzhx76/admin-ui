@@ -11,16 +11,16 @@
     },
     series: [
       {
-        name: '入流量',
+        name: '磁盘量',
         type: 'gauge',
         min: 0,
-        max: 1000,
+        max: 100,
         detail: {
-          formatter: '{value}Mb+',
+          formatter: '{value}%',
           fontSize: 18,
           offsetCenter: [0, '50px']
         },
-        data: [{value: 50, name: '当前入流量'}],
+        data: [{value: 50, name: '磁盘占用量'}],
         center: ['25%', '50%'],
         radius: '80%',
         title: {
@@ -37,16 +37,16 @@
         }
       },
       {
-        name: '出流量',
+        name: '内存量',
         type: 'gauge',
         min: 0,
-        max: 1000,
+        max: 100,
         detail: {
-          formatter: '{value}Mb+',
+          formatter: '{value}%',
           fontSize: 18,
           offsetCenter: [0, '50px']
         },
-        data: [{value: 50, name: '当前出流量'}],
+        data: [{value: 50, name: '内存占用量'}],
         center: ['75%', '50%'],
         radius: '80%',
         title: {
@@ -76,8 +76,8 @@
       drawView() {
         setInterval(function (){
           this.userFlow = echarts.init(document.getElementById('user-flow'));
-          option.series[0].data[0].value = (Math.random()*1000).toFixed(2) - 0;
-          option.series[1].data[0].value = (Math.random()*1000).toFixed(2) - 0;
+          option.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
+          option.series[1].data[0].value = (Math.random()*100).toFixed(2) - 0;
           this.userFlow.setOption(option, true)
         }, 2000);
       }
