@@ -266,6 +266,7 @@
   .feature {
     height: 100%;
     overflow:auto;
+    font-size: 14px;
     li {
       height: 30px;
       line-height: 30px;
