@@ -1,6 +1,5 @@
 <template>
-  <iframe v-if="$route.query.src" :src='$route.query.src' class="iframe" ref="iframe" v-loading.fullscreen.lock="fullscreenLoading"></iframe>
-  <!--<iframe v-else :src="urlPath" class="iframe" ref="iframe" v-loading.fullscreen.lock="fullscreenLoading"></iframe>-->
+  <iframe :src='$route.query.src' class="iframe" ref="iframe" v-loading.fullscreen.lock="fullscreenLoading"></iframe>
 </template>
 
 <script>
@@ -9,7 +8,6 @@
     data() {
       return {
         fullscreenLoading: false,
-//        urlPath: this.getUrlPath()
       }
     },
     created() {
@@ -20,20 +18,11 @@
       window.onresize = () => {
         this.iframeInit()
       }
-
-      console.log(this.$route)
-
     },
-    /*props: ['routerPath'],
-    watch: {
-      routerPath: function(val) {
-        this.urlPath = this.getUrlPath()
-      }
-    },*/
     methods: {
       iframeInit() {
         const iframe = this.$refs.iframe
-        const clientHeight = document.documentElement.clientHeight - 90
+        const clientHeight = document.documentElement.clientHeight - 130
         iframe.style.height = `${clientHeight}px`
         if (iframe.attachEvent) {
           iframe.attachEvent('onload', () => {
@@ -44,12 +33,7 @@
             this.fullscreenLoading = false
           }
         }
-      },
-      /*getUrlPath: function() {
-        let url = window.location.href
-        url = url.replace('/iframe', '')
-        return url
-      }*/
+      }
     }
   }
 </script>

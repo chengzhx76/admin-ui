@@ -124,12 +124,12 @@ export const appRouter = [
     component: Layout,
     meta: {
       title: 'IFRAME',
-      icon: 'people',
+      icon: 'lock',
       roles: ['admin','editor']
     },
     children: [
       {
-        path: ':qq',
+        path: 'qq',
         name: 'iframe_qq',
         component: () => import('@/views/iframe'),
         meta: {
@@ -139,7 +139,7 @@ export const appRouter = [
         }
       },
       {
-        path: ':baidu',
+        path: 'baidu',
         name: 'iframe_baidu',
         component: () => import('@/views/iframe'),
         meta: {
