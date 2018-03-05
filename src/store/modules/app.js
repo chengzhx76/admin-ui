@@ -56,11 +56,23 @@ const app = {
       state.sidebarOpened = !state.sidebarOpened
     },
     // 新打开标签页
-    ADD_VISITED_VIEWS: (state, view) => {
+    /*ADD_VISITED_VIEWS: (state, view) => {
       if (state.visitedViews.some(v => v.path === view.path)) return
       state.visitedViews.push({
         name: view.name,
         path: view.path,
+        title: view.meta.title || 'no-name'
+      })
+      if (!view.meta.noCache) {
+        state.cachedViews.push(view.name)
+      }
+    },*/
+    ADD_VISITED_VIEWS: (state, view) => {
+      console.log(view)
+      if (state.visitedViews.some(v => v.path === view.fullPath)) return
+      state.visitedViews.push({
+        name: view.name,
+        path: view.fullPath,
         title: view.meta.title || 'no-name'
       })
       if (!view.meta.noCache) {

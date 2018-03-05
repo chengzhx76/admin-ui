@@ -55,6 +55,7 @@ export default {
     },
     addViewTags() {
       const route = this.generateRoute()
+//      console.log(route);
       if (!route) {
         return false
       }

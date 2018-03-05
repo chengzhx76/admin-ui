@@ -48,6 +48,17 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  created() {
+    for (const [index, item] of this.menus.entries()) {
+      if (item.name.indexOf('iframe') >= 0) {
+        if (item.children.length > 0) {
+          for (const [childIndex, childItem] of item.children.entries()) {
+            childItem.path = `${childItem.name}?src=${childItem.meta.link}`
+          }
+        }
+      }
+    }
   }
 }
 </script>

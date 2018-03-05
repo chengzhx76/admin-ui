@@ -119,7 +119,7 @@
       <el-col :span="8">
         <el-card>
           <div slot="header">
-            <i class="el-icon-info"></i>
+            <i class="el-icon-menu"></i>
             <span>不同链交易占比</span>
           </div>
           <div class="data-source-row">
@@ -143,7 +143,7 @@
       <el-col :span="24">
         <el-card>
           <div slot="header">
-            <i class="el-icon-info"></i>
+            <i class="el-icon-upload"></i>
             <span>请求量</span>
           </div>
           <div class="data-source-row">

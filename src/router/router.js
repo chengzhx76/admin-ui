@@ -117,6 +117,38 @@ export const appRouter = [
         }
       }
     ]
+  },
+  {
+    path: '/iframe',
+    name: 'iframe',
+    component: Layout,
+    meta: {
+      title: 'IFRAME',
+      icon: 'people',
+      roles: ['admin','editor']
+    },
+    children: [
+      {
+        path: ':qq',
+        name: 'iframe_qq',
+        component: () => import('@/views/iframe'),
+        meta: {
+          title: 'QQ',
+          roles: ['admin','editor'],
+          link: 'http://www.qq.com'
+        }
+      },
+      {
+        path: ':baidu',
+        name: 'iframe_baidu',
+        component: () => import('@/views/iframe'),
+        meta: {
+          title: '百度',
+          roles: ['admin','editor'],
+          link: 'https://www.baidu.com'
+        }
+      }
+    ]
   }
 ];
 

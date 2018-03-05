@@ -74,12 +74,12 @@
     },
     methods: {
       drawView() {
-        setInterval(function (){
+//        setInterval(function (){
           this.userFlow = echarts.init(document.getElementById('user-flow'));
           option.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
           option.series[1].data[0].value = (Math.random()*100).toFixed(2) - 0;
           this.userFlow.setOption(option, true)
-        }, 2000);
+//        }, 3000);
       }
     },
     mounted() {
