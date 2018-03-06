@@ -37,3 +37,11 @@ export function validateEmail(email) {
   return re.test(email)
 }
 
+/* 手机号*/
+export function isvalidMobilePhone(str) {
+  const mobilePhoneRex = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+  return mobilePhoneRex.test(str)
+}
+
+
+

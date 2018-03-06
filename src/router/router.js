@@ -27,13 +27,13 @@ export const otherRouter = {
       component: () => import('@/views/dashboard/home')
     },
     {
-      path: 'personal',
-      name: 'personal',
+      path: 'own-space',
+      name: 'ownSpace',
       meta: {
         title: '个人中心',
         noCache: true
       },
-      component: () => import('@/views/user/Personal')
+      component: () => import('@/views/ownSpace')
     },
     {
       path: 'test',

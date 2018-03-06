@@ -1,4 +1,5 @@
 import { loginByUsername, logout, getUserInfo } from '@/api/login'
+import { updateUser, modifyPasswd } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -96,6 +97,30 @@ const user = {
       })
     },
 
+    // 更新当前用户信息
+    UpdateUser({ commit }, user) {
+      return new Promise((resolve, reject) => {
+        updateUser(user.name, user.mobilePhone, user.remarks).then(response => {
+          commit('SET_NAME', user.name)
+          commit('SET_MOBILE_PHONE', user.mobilePhone)
+          commit('SET_REMARKS', user.remarks)
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // 更新当前用户密码
+    UpdatePasswd({ commit }, password) {
+      return new Promise((resolve, reject) => {
+        modifyPasswd(password).then(() => {
+          resolve()
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    }
   }
 }
 
