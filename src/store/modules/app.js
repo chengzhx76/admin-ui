@@ -68,7 +68,6 @@ const app = {
       }
     },*/
     ADD_VISITED_VIEWS: (state, view) => {
-      console.log(view)
       if (state.visitedViews.some(v => v.path === view.fullPath)) return
       state.visitedViews.push({
         name: view.name,
@@ -98,7 +97,7 @@ const app = {
     DEL_OTHERS_VIEWS: (state, view) => {
       let viewIndex = -1
       for (const [index, item] of state.visitedViews.entries()) {
-        if (item.path === view.path) {
+        if (item.path === view.fullPath) {
           viewIndex = index
           break
         }

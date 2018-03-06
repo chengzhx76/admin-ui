@@ -54,11 +54,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
-  .box-card .el-card__body {
-    padding: 0 !important;
-
-  }
+<style rel="stylesheet/scss" lang="scss" scoped>
   .box-card {
     height: 100px;
     .height-100-ratio {

@@ -1,5 +1,8 @@
 <template>
+  <div>
   <div id="service-request" style="width:100%; height:100%"></div>
+  <button @click="btn">btn</button>
+  </div>
 </template>
 
 <script>
@@ -9,10 +12,15 @@
     name: 'serviceRequest',
     data() {
       return {
-        serviceRequest: null,
+        serviceRequest: {},
+        name: 'test'
       }
     },
     methods: {
+      btn() {
+        console.log(this.serviceRequest)
+        console.log(this.name)
+      },
       drawView() {
         this.serviceRequest = echarts.init(document.getElementById('service-request'));
         this.serviceRequest.setOption({
@@ -97,13 +105,14 @@
               data: [820, 645, 546, 745, 872, 624, 258]
             }
           ]
-        })
+        });
       }
     },
     mounted() {
       this.drawView();
+      let _this = this
       window.addEventListener('resize', function () {
-        this.serviceRequest.resize();
+        _this.serviceRequest.resize();
       });
     },
     beforeDestroy() {

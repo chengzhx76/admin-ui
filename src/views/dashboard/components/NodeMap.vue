@@ -101,8 +101,9 @@
     },
     mounted() {
       this.drawNodesChartMap();
+      let _this = this
       window.addEventListener('resize', function () {
-        this.nodesChartMap.resize();
+        _this.nodesChartMap.resize();
       });
     },
     beforeDestroy() {

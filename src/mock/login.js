@@ -19,7 +19,9 @@ const userMap = {
       token: 'admin',
       avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
       name: 'Super Admin',
-      username: 'admin'
+      username: 'admin',
+      mobilePhone: '18666668888',
+      remarks: '备注信息哈哈123456'
     }
   },
   editor: {
@@ -32,7 +34,9 @@ const userMap = {
       token: 'editor',
       avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
       name: 'Normal Editor',
-      username: 'editor'
+      username: 'editor',
+      mobilePhone: '18600536683',
+      remarks: '备注信息哈哈'
     }
   },
   cheng: {

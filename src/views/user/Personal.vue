@@ -1,91 +1,98 @@
 <template>
-  <div class="user">
-    <el-row gutter="15">
-      <el-col span="8">
-        <el-card class="user-box">
-          <el-row class="user-info">
-            <el-col span="8" class="avatar">
-              <img class="avatar-img" :src="avatar" />
-            </el-col>
-            <el-col span="16" class="name">
-              <strong class="real-name">{{ name }}</strong>
-              <p class="username">{{ username }}</p>
-            </el-col>
-          </el-row>
-          <div class="line-gray"></div>
-          <div class="last-login-time">
-            <span class="text">上次登录时间：</span>
-            <em class="time">2018.2.27-15:12:02</em>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-  </div>
+  <el-card class="box-card">
+    <div slot="header" class="clearfix">
+      <i class="el-icon-setting"></i>
+      <span>个人信息</span>
+    </div>
+    <div class="user">
+      <el-row>
+        <el-col :span="12">
+          <el-form :model="userForm" status-icon :rules="userRules" ref="userForm" label-width="100px">
+            <el-form-item label="账号" prop="username" >
+              <el-input type="text" v-model="userForm.username" disabled></el-input>
+            </el-form-item>
+            <el-form-item label="用户姓名" prop="name" required>
+              <el-input type="text" v-model="userForm.name" auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="手机号" prop="mobilePhone" required>
+              <el-input v-model="userForm.mobilePhone"></el-input>
+            </el-form-item>
+            <el-form-item label="备注" prop="remarks">
+              <el-input type="textarea" v-model="userForm.remarks"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm('userForm')">提交</el-button>
+              <el-button @click="resetForm('userForm')">重置</el-button>
+            </el-form-item>
+          </el-form>
+        </el-col>
+      </el-row>
+    </div>
+  </el-card>
 </template>
 
 <script>
+
   import { mapGetters } from 'vuex'
+
   export default {
-    name: 'User',
-    computed: {
-      ...mapGetters([
-        'username',
-        'name',
-        'avatar'
-      ])
+    name: 'Personal',
+    data() {
+      var validateName = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('名字不能为空'));
+        }
+        if (value.length > 24) {
+          return callback(new Error('名字长度不能超过6位'));
+        }
+        callback();
+    };
+      const mobilePhoneRex = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+      var validateMobilePhone = (rule, value, callback) => {
+        if (value === '') {
+          return callback(new Error('请输入手机号'));
+        } else {
+          if (!mobilePhoneRex.test(value)) {
+            return callback(new Error('请输入正确的手机号'));
+          }
+          callback();
+        }
+      };
+      return {
+        userForm: {
+          username: this.$store.getters.username,
+          name: this.$store.getters.name,
+          mobilePhone: this.$store.getters.mobilePhone,
+          remarks: this.$store.getters.remarks,
+        },
+        userRules: {
+          name: [
+            { validator: validateName, trigger: 'blur' }
+          ],
+          mobilePhone: [
+            { validator: validateMobilePhone, trigger: 'blur' }
+          ]
+        }
+      };
     },
+    methods: {
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            this.$message.error('请正确填写用户信息')
+            return false
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
+    }
   }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .user-info {
-    display:flex;
-    align-items:center;
-    .avatar {
-      .avatar-img {
-        width: 100%;
-        max-width: 100px;
-        height: auto;
-        border-radius: 3px;
-      }
-    }
-    .name {
-      padding-left: 10px;
-      .real-name {
-        height: 30px;
-        line-height: 30px;
-        display: block;
-        font-size: 20px;
-        color: #2F8DF0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .username {
-        height: 20px;
-        line-height: 20px;
-        margin: 0;
-        font-size: 16px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-  }
-  .last-login-time {
-    font-size: 15px;
-    color: #909399;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    .time {
-      font-style: normal;
-    }
-  }
 
-  .line-gray{
-    height: 0;
-    border-bottom: 2px solid #dcdcdc;
-    margin: 10px 0;
-  }
 </style>

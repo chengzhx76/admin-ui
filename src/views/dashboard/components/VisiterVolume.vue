@@ -68,8 +68,9 @@
     },
     mounted() {
       this.drawView();
+      let _this = this
       window.addEventListener('resize', function () {
-        this.visiterVolumeView.resize();
+        _this.visiterVolumeView.resize();
       });
     },
     beforeDestroy() {

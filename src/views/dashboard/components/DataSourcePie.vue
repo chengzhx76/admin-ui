@@ -56,8 +56,9 @@
     },
     mounted() {
       this.drawView();
+      let _this = this
       window.addEventListener('resize', function () {
-        this.dataSourcePie.resize();
+        _this.dataSourcePie.resize();
       });
     },
     beforeDestroy() {

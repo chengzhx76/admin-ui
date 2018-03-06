@@ -84,8 +84,9 @@
     },
     mounted() {
       this.drawView();
+      let _this = this
       window.addEventListener('resize', function () {
-        this.userFlow.resize();
+        _this.userFlow.resize();
       });
     },
     beforeDestroy() {

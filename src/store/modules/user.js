@@ -7,6 +7,8 @@ const user = {
     name: '',
     token: getToken(),
     avatar: '',
+    mobilePhone: '',
+    remarks: '',
     roles: []
   },
 
@@ -22,6 +24,12 @@ const user = {
     },
     SET_AVATAR: (state, avatar) => {
       state.avatar = avatar
+    },
+    SET_MOBILE_PHONE: (state, mobilePhone) => {
+      state.mobilePhone = mobilePhone
+    },
+    SET_REMARKS: (state, remarks) => {
+      state.remarks = remarks
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles
@@ -56,6 +64,8 @@ const user = {
           commit('SET_USERNAME', data.username)
           commit('SET_NAME', data.name)
           commit('SET_AVATAR', data.avatar)
+          commit('SET_MOBILE_PHONE', data.mobilePhone)
+          commit('SET_REMARKS', data.remarks)
           resolve(response)
         }).catch(error => {
           reject(error)
