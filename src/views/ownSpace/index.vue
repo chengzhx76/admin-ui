@@ -24,7 +24,7 @@
               <el-input type="textarea" v-model="userForm.remarks"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" :loading="loading" @click="submitForm('userForm')">提交</el-button>
+              <el-button type="primary" :loading="loading" @click="submitForm('userForm')">保存</el-button>
               <el-button @click="resetForm('userForm')">重置</el-button>
             </el-form-item>
           </el-form>
@@ -50,7 +50,7 @@
       </el-row>
       <div slot="footer" class="dialog-footer">
         <el-button @click="cancelModPasswd()">取 消</el-button>
-        <el-button type="primary" :loading="modPasswdLoading" @click="modPasswd()">确 定</el-button>
+        <el-button type="primary" :loading="modPasswdLoading" @click="modPasswd()">保存</el-button>
       </div>
     </el-dialog>
 
